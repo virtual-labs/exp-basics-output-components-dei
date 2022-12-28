@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="exp-changer">
+        <div class="exp-changer-heading">
+          <p class="p-head">IOT Virtual Lab</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="navbar">
+      <div class="navbar1">
+        <a href="../../index.html">Home</a>
+      </div>
+      <div class="navbar-heading">Simulation Window</div>
+      <div class="navbar2">
+        <a href="../expSelector.html">Go Back</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing of Arduino with Push button :</p>
+        <div class="interfacing">
+          <img id="ifimg" src="./src/images/RGB_Off.png" alt="interfacing" />
+          <button id="pushbutton" onclick="changeImage();"></button>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="code">
+        <div class="code-head"><p class="p-head">ARDUINO CODE</p></div>
+        <div>
+          <form action="" method="POST">
+            <textarea id="arduinoCode" readonly>
+/* 
+    Interfacing of RGB Led with Arduino.
+*/
+int red_light_pin= 11;
+int green_light_pin = 10;
+int blue_light_pin = 9;
+
+void setup() {
+  pinMode(red_light_pin, OUTPUT);
+  pinMode(green_light_pin, OUTPUT);
+  pinMode(blue_light_pin, OUTPUT);
+}
+
+void loop() {
+  RGB_color(255, 0, 0); // Red
+  delay(1000);
+  RGB_color(0, 255, 0); // Green
+  delay(1000);
+  RGB_color(0, 0, 255); // Blue
+  delay(1000);
+  RGB_color(255, 255, 125); // Raspberry
+  delay(1000);
+  RGB_color(0, 255, 255); // Cyan
+  delay(1000);
+  RGB_color(255, 0, 255); // Magenta
+  delay(1000);
+  RGB_color(255, 255, 0); // Yellow
+  delay(1000);
+  RGB_color(255, 255, 255); // White
+  delay(1000);
+}
+
+void RGB_color(int red_light_value, int green_light_value, int blue_light_value)
+ {
+  analogWrite(red_light_pin, red_light_value);
+  analogWrite(green_light_pin, green_light_value);
+  analogWrite(blue_light_pin, blue_light_value);
+}
+            </textarea>
+          </form>
+        </div>
+        <div class="code-head startStop">
+          <h2 id="pushbuttonPower" onclick="changePower();">
+            Start Simulation
+          </h2>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="src/js/main.js"></script>
+  </body>
+</html>
