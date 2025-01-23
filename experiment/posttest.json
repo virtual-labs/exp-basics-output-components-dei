@@ -2,38 +2,38 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What does PWM stand for in Arduino programming?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Pulse Width Modulation",
+        "b": "Power Wave Management",
+        "c": "Pulse Wave Modulation",
+        "d": "Power Width Measurement"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Correct: PWM is used to simulate analog output.",
+        "b": "Incorrect: This term is unrelated.",
+        "c": "Incorrect: Pulse Wave Modulation is not accurate.",
+        "d": "Incorrect: Power Width Measurement does not exist."
       },
       "correctAnswer": "a",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which Arduino function is used to display text on a 16x2 LCD?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "lcd.print()",
+        "b": "lcd.write()",
+        "c": "lcd.display()",
+        "d": "lcd.show()"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Correct: lcd.print() outputs text.",
+        "b": "Incorrect: lcd.write() is used for ASCII values.",
+        "c": "Incorrect: lcd.display() is not a valid function.",
+        "d": "Incorrect: lcd.show() does not exist in Arduino."
       },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
     }
   ]
 }

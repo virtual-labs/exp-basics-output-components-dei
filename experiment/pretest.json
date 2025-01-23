@@ -2,37 +2,37 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "How many types of Arduino do we have?",
+      "question": "What is the purpose of the common pin in an RGB LED?",
       "answers": {
-        "a": "4",
-        "b": "8",
-        "c": "12",
-        "d": "16"
+        "a": "Control intensity",
+        "b": "Connect to power or ground",
+        "c": "Switch between colors",
+        "d": "Adjust brightness levels"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect: Intensity is controlled by PWM signals.",
+        "b": "Correct: The common pin is connected to either power or ground. <a href='https://learn.adafruit.com'>Learn more</a>",
+        "c": "Incorrect: Color switching is achieved using individual pins.",
+        "d": "Incorrect: Brightness levels depend on PWM."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "What language is a typical Arduino code based on?",
+      "question": "How many pins are typically used to control a 7-segment display?",
       "answers": {
-        "a": "Assembly Code",
-        "b": "Python",
-        "c": "Java",
-        "d": "C/C++"
+        "a": "5",
+        "b": "7",
+        "c": "9",
+        "d": "10"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect: 5 pins are insufficient.",
+        "b": "Correct: 7 pins control individual segments. <a href='https://learn.adafruit.com'>Learn more</a>",
+        "c": "Incorrect: 9 pins might include decimal point.",
+        "d": "Incorrect: 10 pins are unnecessary."
       },
-      "correctAnswer": "d",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
