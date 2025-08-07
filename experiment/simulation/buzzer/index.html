@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="exp-changer">
+        <div class="exp-changer-heading">
+          <p class="p-head">IOT Virtual Lab</p>
+        </div>
+      </div>
+    </header>
+
+    
+
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing of Buzzer with Arduino:</p>
+        <div class="interfacing">
+          <img
+            id="ifimg2"
+            src="./src/images/buzzer/buzzer_static.png"
+            alt="interfacing"
+          />
+          <audio
+            id="myAudio"
+            src="./src/audio/buzzer.mp3"
+            preload="auto"
+          ></audio>
+          <button
+            id="buzzerpushbutton"
+            onclick="changeBuzzerImage();togglePlay();"
+          ></button>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="code">
+        <div class="code-head"><p class="p-head">ARDUINO CODE</p></div>
+        <div>
+          <form action="" method="POST">
+            <textarea id="arduinoCode" readonly>
+int buz = 3; // Buzzer is connected on Pin No. 3
+int but = 4; // Push Button is connected on Pin No. 4
+int val;
+
+void setup( )
+{
+  pinMode(buz, OUTPUT); // Buzzer mode is OUTPUT.
+  pinMode(but, INPUT); // Push Button mode is INPUT.
+}
+
+void loop()
+{
+  val = digitalRead (but); // Reads the value from Push Button whether it is pressed or not.
+  if (val == LOW) 
+  { 
+    digitalWrite(buz,HIGH); // Buzzer is turned ON.
+  }
+  else
+  {
+    digitalWrite(buz,LOW); //  Buzzer is turned OFF.
+  }
+}
+            </textarea>
+          </form>
+        </div>
+        <div class="code-head startStop">
+          <h2 id="pushbuttonPower" onclick="changePowerBuzzer();">
+            Start Simulation
+          </h2>
+        </div>
+      </div>
+      <div id="pushbuttonNotification">
+        Click the pushbutton!
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script>
+      // Initialize CodeMirror editor in read-only mode with an increased height
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+            mode: "text/x-c++src", // For C++/Arduino syntax highlighting
+            lineNumbers: true, // Show line numbers
+            matchBrackets: true, // Highlight matching brackets
+            theme: "default", // You can change the theme
+            readOnly: "nocursor", // Make the editor read-only
+            tabSize: 4,
+            indentUnit: 4,
+        });
+    </script>
+    <script type="text/javascript" src="src/js/buzzer.js"></script>
+  </body>
+</html>

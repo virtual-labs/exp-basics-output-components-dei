@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="exp-changer">
+        <div class="exp-changer-heading">
+          <p class="p-head">IOT Virtual Lab</p>
+        </div>
+      </div>
+    </header>
+
+    
+
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing OLED Display with Arduino:</p>
+        <div class="interfacing">
+          <img
+            id="ifimg"
+            src="./src/images/led/oled_off.gif"
+            alt="interfacing"
+          />
+          <button id="pushbutton" onclick="changeImage();"></button>
+          
+        </div>
+      </div>
+      <div class="separator"></div>
+      
+      <div class="code">
+        <div class="code-head"><p class="p-head">ARDUINO CODE</p></div>
+        <div>
+          <form action="" method="POST">
+            <textarea id="arduinoCode" readonly>
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET     4
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// Function to display full line word-by-word with animation
+void animateLine(String line, int x, int y, int wordDelay) {
+  display.setCursor(x, y);
+  String word = "";
+  for (int i = 0; i < line.length(); i++) {
+    char c = line.charAt(i);
+    if (c == ' ' || i == line.length() - 1) {
+      if (i == line.length() - 1) word += c;  // Include last character
+      display.print(word + " ");
+      display.display();
+      delay(wordDelay);
+      word = "";
+    } else {
+      word += c;
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3D)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    while (true);
+  }
+
+  display.clearDisplay();
+  display.display();
+  delay(1000);
+}
+
+void loop() {
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+
+  // First message: split into 2 lines manually
+  animateLine("Welcome to IOT", 0, 10, 400);
+  animateLine("Virtual Lab", 0, 20, 400);
+  delay(1000);  // pause between messages
+
+  display.clearDisplay();
+
+  // Second message: also split to fit OLED screen
+  animateLine("This is a sample", 0, 10, 300);
+  animateLine("program of OLED", 0, 20, 300);
+  animateLine("Display", 0, 30, 300);
+  delay(1500);  // pause before repeating
+}
+
+            </textarea>
+          </form>
+        </div>
+        <div class="code-head startStop">
+          <h2 id="pushbuttonPower" onclick="changePower();">
+            Start Simulation
+          </h2>
+        </div>
+      </div>
+      <div id="pushbuttonNotification">
+        Click the pushbutton!
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script>
+      // Initialize CodeMirror editor in read-only mode with an increased height
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+            mode: "text/x-c++src", // For C++/Arduino syntax highlighting
+            lineNumbers: true, // Show line numbers
+            matchBrackets: true, // Highlight matching brackets
+            theme: "default", // You can change the theme
+            readOnly: "nocursor", // Make the editor read-only
+            tabSize: 4,
+            indentUnit: 4,
+        });
+    </script>
+    <script type="text/javascript" src="src/js/main.js"></script>
+  </body>
+</html>
