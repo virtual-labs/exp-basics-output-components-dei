@@ -2,38 +2,174 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What does PWM stand for in Arduino programming?",
+      "question": "Explain common cathode vs common anode 7-segment display.",
       "answers": {
-        "a": "Pulse Width Modulation",
-        "b": "Power Wave Management",
-        "c": "Pulse Wave Modulation",
-        "d": "Power Width Measurement"
+        "a": "Common cathode has all grounds connected; common anode has all positives connected.",
+        "b": "Common cathode uses analog signals; common anode uses digital signals.",
+        "c": "Common cathode has fewer pins.",
+        "d": "Common anode works only with AC supply."
       },
       "explanations": {
-        "a": "Correct: PWM is used to simulate analog output.",
-        "b": "Incorrect: This term is unrelated.",
-        "c": "Incorrect: Pulse Wave Modulation is not accurate.",
-        "d": "Incorrect: Power Width Measurement does not exist."
+        "a": "Correct: CC = shared ground, CA = shared +V.",
+        "b": "Incorrect: Both use digital signals.",
+        "c": "Incorrect: Both have same number of pins.",
+        "d": "Incorrect: Both work on DC low voltage."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
-      "question": "Which Arduino function is used to display text on a 16x2 LCD?",
+      "question": "How can Arduino generate multiple colors on an RGB LED?",
       "answers": {
-        "a": "lcd.print()",
-        "b": "lcd.write()",
-        "c": "lcd.display()",
-        "d": "lcd.show()"
+        "a": "By mixing PWM signals on the red, green, and blue pins.",
+        "b": "By changing the input voltage.",
+        "c": "By connecting it to analog input pins.",
+        "d": "By rotating the LED physically."
       },
       "explanations": {
-        "a": "Correct: lcd.print() outputs text.",
-        "b": "Incorrect: lcd.write() is used for ASCII values.",
-        "c": "Incorrect: lcd.display() is not a valid function.",
-        "d": "Incorrect: lcd.show() does not exist in Arduino."
+        "a": "Correct: PWM allows brightness control → mixed colors.",
+        "b": "Incorrect: Voltage alone cannot create colors.",
+        "c": "Incorrect: RGB LEDs require output pins.",
+        "d": "Incorrect: Rotation does not affect color."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"
+    },
+    {
+      "question": "Why is OLED preferred in modern IoT dashboards?",
+      "answers": {
+        "a": "It consumes low power and gives high contrast display.",
+        "b": "It requires no programming.",
+        "c": "It can only display text.",
+        "d": "It works only in dark conditions."
+      },
+      "explanations": {
+        "a": "Correct: OLED is bright, low-power, and great for visuals.",
+        "b": "Incorrect: Programming is still required.",
+        "c": "Incorrect: OLED can display text, graphics, icons.",
+        "d": "Incorrect: Works in all lighting conditions."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Describe the internal working of an LCD 16×2.",
+      "answers": {
+        "a": "It uses a controller (HD44780) to drive characters in a dot matrix.",
+        "b": "It displays text using OLED pixels.",
+        "c": "It stores each character in RAM permanently.",
+        "d": "It uses LEDs behind every character."
+      },
+      "explanations": {
+        "a": "Correct: LCD uses HD44780 controller + dot matrix.",
+        "b": "Incorrect: OLED is a different display tech.",
+        "c": "Incorrect: RAM is temporary.",
+        "d": "Incorrect: LEDs are used only for backlight."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How can you display sensor data on LCD?",
+      "answers": {
+        "a": "Read sensor → convert to value → use lcd.print().",
+        "b": "Write sensor data directly to the LCD pins.",
+        "c": "Use digitalWrite() for text display.",
+        "d": "Use the LCD to sense data."
+      },
+      "explanations": {
+        "a": "Correct: Sensor reading + lcd.print() shows data.",
+        "b": "Incorrect: LCD requires library commands.",
+        "c": "Incorrect: digitalWrite cannot print text.",
+        "d": "Incorrect: LCD cannot sense anything."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the difference between active and passive buzzer?",
+      "answers": {
+        "a": "Active buzzer has built-in oscillator; passive needs tone() to generate sound.",
+        "b": "Passive buzzer is louder always.",
+        "c": "Active buzzer can read input signals.",
+        "d": "Both work only with analog input."
+      },
+      "explanations": {
+        "a": "Correct: Active = simple ON/OFF tone. Passive = multi-tone via PWM.",
+        "b": "Incorrect: Loudness depends on design.",
+        "c": "Incorrect: Buzzers are output devices.",
+        "d": "Incorrect: They work on digital signals."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does I2C communication reduce pin usage?",
+           "answers": {
+        "a": "It uses only two lines (SDA, SCL) for multiple devices.",
+        "b": "It disables unused pins.",
+        "c": "It converts analog pins into digital pins.",
+        "d": "It transmits data without wires."
+      },
+      "explanations": {
+        "a": "Correct: I2C allows many devices on same two wires.",
+        "b": "Incorrect: I2C does not disable pins.",
+        "c": "Incorrect: Pin function does not change.",
+        "d": "Incorrect: Wires are required."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What happens when incorrect wiring is done for 7-segment display?",
+      "answers": {
+        "a": "Some segments will glow incorrectly or not at all.",
+        "b": "It will automatically correct the connection.",
+        "c": "It will display all numbers perfectly.",
+        "d": "It will reset Arduino."
+      },
+      "explanations": {
+        "a": "Correct: Wrong wiring → wrong segments lit.",
+        "b": "Incorrect: No auto-correction exists.",
+        "c": "Incorrect: Wrong wiring cannot display correctly.",
+        "d": "Incorrect: Only short circuits may affect Arduino."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Give a real-life application of buzzer in IoT.",
+      "answers": {
+        "a": "Home security alarm system.",
+        "b": "Video streaming device.",
+        "c": "Weather forecast display.",
+        "d": "LED street light."
+      },
+      "explanations": {
+        "a": "Correct: Buzzers are used for alerts in IoT devices.",
+        "b": "Incorrect: Streaming devices do not use buzzers.",
+        "c": "Incorrect: Weather displays do not alert with buzzers.",
+        "d": "Incorrect: Street lights do not use buzzers."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "How can brightness of RGB LED be controlled in simulation?",
+      "answers": {
+        "a": "By using PWM output through analogWrite() on each color pin.",
+        "b": "By changing digitalRead() values.",
+        "c": "By using Serial Monitor.",
+        "d": "By rotating the LED wires."
+      },
+      "explanations": {
+        "a": "Correct: PWM controls brightness of R, G, B channels.",
+        "b": "Incorrect: digitalRead does not control output.",
+        "c": "Incorrect: Serial Monitor cannot change LED brightness.",
+        "d": "Incorrect: Wiring position doesn’t control brightness."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
     }
   ]
 }

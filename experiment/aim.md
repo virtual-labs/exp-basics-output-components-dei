@@ -1,2 +1,3 @@
+## Aim
 
-1. To simulate interfacing of basic output components (RGB Led, 7 segments and LCD 16*2) with Arduino.
+To simulate the working of commonly used output devices with Arduino and analyze how microcontrollers generate visual or audio responses. The experiment also demonstrates control over color, display characters, numeric output, and sound.
