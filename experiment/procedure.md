@@ -1,4 +1,4 @@
-## Procedure
+### Procedure for the experiment is as follows:
 
 1. Open the experiment in the virtual lab for basic output components.  
    The Arduino board and all output devices (RGB LED, 7-segment display, OLED, LCD 16x2, and buzzer) are already connected.

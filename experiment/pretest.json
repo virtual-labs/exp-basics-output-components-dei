@@ -2,171 +2,111 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What does RGB stand for in RGB LED?",
+      "question": "1. What does RGB stand for in RGB LED?",
       "answers": {
         "a": "Red Green Blue",
         "b": "Red Grey Black",
         "c": "Right Gain Bright",
         "d": "Random Gradient Beam"
       },
-      "explanations": {
-        "a": "Correct: RGB LEDs combine Red, Green, and Blue light.",
-        "b": "Incorrect: These are not LED color channels.",
-        "c": "Incorrect: Not related to light colors.",
-        "d": "Incorrect: Not an electronics term."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Which Arduino function generates PWM output?",
+      "question": "2. Which Arduino function generates PWM output?",
       "answers": {
         "a": "analogWrite()",
         "b": "analogRead()",
         "c": "digitalRead()",
         "d": "tone()"
       },
-      "explanations": {
-        "a": "Correct: analogWrite() outputs PWM on supported pins.",
-        "b": "Incorrect: analogRead() reads analog signals.",
-        "c": "Incorrect: digitalRead() reads HIGH/LOW.",
-        "d": "Incorrect: tone() generates sound frequencies, not PWM."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "How many segments are present in a 7-segment display?",
+      "question": "3. How many segments are present in a 7-segment display?",
       "answers": {
         "a": "7",
         "b": "8",
         "c": "6",
         "d": "9"
       },
-      "explanations": {
-        "a": "Incorrect: 7 segments are for digits.",
-        "b": "Correct: 7 segments + 1 decimal point = 8 total.",
-        "c": "Incorrect: Too few segments.",
-        "d": "Incorrect: Incorrect count."
-      },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "OLED display communicates using which protocol?",
+      "question": "4. OLED display communicates using which protocol?",
       "answers": {
         "a": "I2C",
         "b": "USB",
         "c": "HDMI",
         "d": "Ethernet"
       },
-      "explanations": {
-        "a": "Correct: Most small Arduino OLED modules use I2C.",
-        "b": "Incorrect: USB is not a microcontroller display protocol.",
-        "c": "Incorrect: HDMI is for high-resolution screens.",
-        "d": "Incorrect: Ethernet is for networking."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "How many characters can a 16×2 LCD display on one line?",
+      "question": "5. How many characters can a 16×2 LCD display on one line?",
       "answers": {
         "a": "8",
         "b": "16",
         "c": "32",
         "d": "2"
       },
-      "explanations": {
-        "a": "Incorrect: That is half the line.",
-        "b": "Correct: 16 characters per line × 2 lines.",
-        "c": "Incorrect: That is total characters (16×2).",
-        "d": "Incorrect: 2 refers to number of lines."
-      },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "Which library is typically used for LCD 16×2?",
+      "question": "6. Which library is typically used for LCD 16×2?",
       "answers": {
         "a": "LiquidCrystal",
         "b": "Wire.h",
         "c": "Servo.h",
         "d": "Adafruit_NeoPixel"
       },
-      "explanations": {
-        "a": "Correct: LiquidCrystal library controls 16×2 LCD modules.",
-        "b": "Incorrect: Wire.h is for I2C communication.",
-        "c": "Incorrect: Servo.h is for servo motors.",
-        "d": "Incorrect: NeoPixel library is for LED strips."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "What does DP mean in 7-segment display?",
+      "question": "7. What does DP mean in 7-segment display?",
       "answers": {
         "a": "Decimal Point",
         "b": "Data Pin",
         "c": "Display Power",
         "d": "Digit Position"
       },
-      "explanations": {
-        "a": "Correct: DP is the small dot used for decimal values.",
-        "b": "Incorrect: Data pin is unrelated to DP.",
-        "c": "Incorrect: Not related to power.",
-        "d": "Incorrect: DP is not digit selection."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Does a buzzer act as an input or output device?",
+      "question": "8. Does a buzzer act as an input or output device?",
       "answers": {
         "a": "Output device",
         "b": "Input device",
         "c": "Both",
         "d": "Neither"
       },
-      "explanations": {
-        "a": "Correct: Buzzers produce sound → output device.",
-        "b": "Incorrect: Buzzers do not provide input data.",
-        "c": "Incorrect: They are not dual-purpose.",
-        "d": "Incorrect: They serve a purpose (output)."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "Which Arduino pins can be used for PWM output?",
+      "question": "9. Which Arduino pins can be used for PWM output?",
       "answers": {
         "a": "Pins marked with '~' symbol",
         "b": "All digital pins",
         "c": "Only analog pins",
         "d": "Only communication pins"
       },
-      "explanations": {
-        "a": "Correct: PWM pins have a '~' next to their number.",
-        "b": "Incorrect: Only specific pins support PWM.",
-        "c": "Incorrect: Analog pins are for input.",
-        "d": "Incorrect: TX/RX/SCL/SDA are not PWM pins."
-      },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "What is the purpose of the enable pin in LCD?",
+      "question": "10. What is the purpose of the enable pin in LCD?",
       "answers": {
         "a": "To latch and process the command/data sent to LCD",
         "b": "To adjust display brightness",
         "c": "To reset the LCD",
         "d": "To change communication protocol"
-      },
-      "explanations": {
-        "a": "Correct: Enable pin triggers LCD to read data sent.",
-        "b": "Incorrect: Brightness is controlled via contrast pin.",
-        "c": "Incorrect: LCDs do not reset through enable pin.",
-        "d": "Incorrect: Protocol cannot be changed this way."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
