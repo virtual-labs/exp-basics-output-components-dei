@@ -1,4 +1,4 @@
-## References
+### References
 
 1. Arduino Official Documentation, "Using Digital Outputs", Available at: https://www.arduino.cc/en/Tutorial/BuiltInExamples
 2. Simon Monk, "30 Arduino Projects for the Evil Genius", McGraw-Hill Education, 2013.
