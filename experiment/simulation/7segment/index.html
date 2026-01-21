@@ -4,240 +4,269 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Virtual IoT Lab DEI</title>
-    <link
-      rel="icon"
-      href="https://www.vlab.co.in/images/logo.jpg"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+    <link rel="icon" href="https://www.vlab.co.in/images/logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
   </head>
   <body>
-    <header>
-      <div class="exp-changer">
-        <div class="exp-changer-heading">
-          <p class="p-head">IOT Virtual Lab</p>
-        </div>
-      </div>
-    </header>
-
-   
-
     <div class="container">
       <div class="if-vid">
-        <p class="p-head">Interfacing of 7 Segment Display with Arduino :</p>
+        <p class="p-head">Interfacing 7-Segment Display with Arduino:</p>
         <div class="interfacing">
           <img id="ifimg" src="./src/images/7sOff.png" alt="interfacing" />
           <button id="pushbutton" onclick="changeImage();"></button>
         </div>
       </div>
-      <div class="separator"></div>
-      <div class="code">
-        <div class="code-head"><p class="p-head">ARDUINO CODE</p></div>
-        <div>
-          <form action="" method="POST">
+
+      <div class="right-panel">
+        <div class="instruction-box">
+          <h3 class="box-title">Instructions</h3>
+          <div class="instruction-content">
+            <div class="instruction-section">
+              <h4>Objective:</h4>
+              <p>Learn how to control a 7-segment display to show digits (0-9) using Arduino digital outputs.</p>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Steps to Perform:</h4>
+              <ol>
+                <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
+                <li>The 7-segment display will automatically start counting from 0 to 9</li>
+                <li>Observe how different segments light up to form each digit</li>
+                <li>Watch the decimal point blink after each number</li>
+                <li>The counter will loop back to 0 after reaching 9</li>
+              </ol>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Key Concepts:</h4>
+              <ul>
+                <li><strong>7-Segment Display:</strong> LED display with 7 segments (A-G) plus decimal point</li>
+                <li><strong>Common Cathode:</strong> All segment cathodes connected together to ground</li>
+                <li><strong>Digital Output:</strong> Arduino controls each segment individually (HIGH/LOW)</li>
+                <li><strong>Segment Mapping:</strong> Different combinations create digits 0-9</li>
+                <li><strong>Pin Control:</strong> Uses pins 4-12 for segments and common cathode</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-box-header">
+            <span class="box-title">Arduino Code - main.ino</span>
+            <div class="code-actions">
+              <button class="control-btn start-btn" id="startBtn" onclick="changePower();">
+                <span class="play-icon">▶</span> Start Simulation
+              </button>
+            </div>
+          </div>
+          <div class="code-content">
             <textarea id="arduinoCode" readonly>
-#define COMMON_A 12
-#define SEGMENT_A 11
-#define SEGMENT_B 10
-#define SEGMENT_C 9
-#define SEGMENT_D 8
-#define SEGMENT_E 7
-#define SEGMENT_F 6
-#define SEGMENT_G 5
-#define DECIMAL_POINT 4
+#define COMMON_A        12
+#define SEGMENT_A       11
+#define SEGMENT_B       10
+#define SEGMENT_C        9
+#define SEGMENT_D        8
+#define SEGMENT_E        7
+#define SEGMENT_F        6
+#define SEGMENT_G        5
+#define DECIMAL_POINT   4
 
-// Code for CATHODE 7 SEG-DISPLAY
-// index and number counter
-int i = 0, num = 0;
+// Code for COMMON CATHODE 7-SEGMENT DISPLAY
 
-// Init a pinList (4- 12)
-int pinList[9] = {  DECIMAL_POINT,
-SEGMENT_G ,
-SEGMENT_F ,
-SEGMENT_E ,
-SEGMENT_D ,
-SEGMENT_C ,
-SEGMENT_B ,
-SEGMENT_A ,
-COMMON_A };
+int i = 0;
+int num = 0;
+
+// Pin list (4–12)
+int pinList[9] = {
+  DECIMAL_POINT,
+  SEGMENT_G,
+  SEGMENT_F,
+  SEGMENT_E,
+  SEGMENT_D,
+  SEGMENT_C,
+  SEGMENT_B,
+  SEGMENT_A,
+  COMMON_A
+};
 
 void setup() {
-for (i = 0; i <= 8; i++) {
+  for (i = 0; i <= 8; i++) {
     pinMode(pinList[i], OUTPUT);
+  }
 }
-}
-
 
 void loop() {
-digitalWrite(COMMON_A, LOW);
 
-if (num == 10) num = 0;
+  digitalWrite(COMMON_A, LOW);
 
-switch(num) {
+  if (num == 10)
+    num = 0;
 
-// Displaying 0 Module
-case 0 : digitalWrite(SEGMENT_A, HIGH);
-   digitalWrite(SEGMENT_B, HIGH);
-   digitalWrite(SEGMENT_C, HIGH);
-   digitalWrite(SEGMENT_D, HIGH);
-   digitalWrite(SEGMENT_E, HIGH);
-   digitalWrite(SEGMENT_F, HIGH);
-break;
+  switch (num) {
 
-// Displaying 1 Module
-case 1 : digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-break;
+    // Display 0
+    case 0:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      digitalWrite(SEGMENT_E, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      break;
 
-// Displaying 2 Module
-case 2 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-digitalWrite(SEGMENT_E, HIGH);
-digitalWrite(SEGMENT_D, HIGH);
-break;
+    // Display 1
+    case 1:
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      break;
 
-// Displaying 3 Module
-case 3 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-digitalWrite(SEGMENT_D, HIGH);
-break;
+    // Display 2
+    case 2:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      digitalWrite(SEGMENT_E, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      break;
 
-// Displaying 4 Module
-case 4 : digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-digitalWrite(SEGMENT_F, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-break;
+    // Display 3
+    case 3:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      break;
 
-// Displaying 5 Module
-case 5 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_F, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-digitalWrite(SEGMENT_D, HIGH);
-break;
+    // Display 4
+    case 4:
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      break;
 
-// Displaying 6 Module
-case 6 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_F, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-digitalWrite(SEGMENT_D, HIGH);
-digitalWrite(SEGMENT_E, HIGH);
-break;
+    // Display 5
+    case 5:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      break;
 
-// Displaying 7 Module
-case 7 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-break;
+    // Display 6
+    case 6:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      digitalWrite(SEGMENT_E, HIGH);
+      break;
 
-// Displaying 8 Module
-case 8 : digitalWrite(SEGMENT_A, HIGH);
-   digitalWrite(SEGMENT_B, HIGH);
-   digitalWrite(SEGMENT_C, HIGH);
-   digitalWrite(SEGMENT_D, HIGH);
-   digitalWrite(SEGMENT_E, HIGH);
-   digitalWrite(SEGMENT_F, HIGH);
-   digitalWrite(SEGMENT_G, HIGH);
-break;
+    // Display 7
+    case 7:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      break;
 
-// Displaying 9 Module
-case 9 : digitalWrite(SEGMENT_A, HIGH);
-digitalWrite(SEGMENT_B, HIGH);
-digitalWrite(SEGMENT_C, HIGH);
-digitalWrite(SEGMENT_D, HIGH);
-digitalWrite(SEGMENT_F, HIGH);
-digitalWrite(SEGMENT_G, HIGH);
-break;
+    // Display 8
+    case 8:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      digitalWrite(SEGMENT_E, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      break;
 
-// Displaying all segment if error occurs
-default: for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], HIGH);
+    // Display 9
+    case 9:
+      digitalWrite(SEGMENT_A, HIGH);
+      digitalWrite(SEGMENT_B, HIGH);
+      digitalWrite(SEGMENT_C, HIGH);
+      digitalWrite(SEGMENT_D, HIGH);
+      digitalWrite(SEGMENT_F, HIGH);
+      digitalWrite(SEGMENT_G, HIGH);
+      break;
+
+    // Error case: blink all segments
+    default:
+      for (i = 1; i < 8; i++)
+        digitalWrite(pinList[i], HIGH);
+
+      delay(1000);
+
+      for (i = 1; i < 8; i++)
+        digitalWrite(pinList[i], LOW);
+
+      delay(1000);
+      break;
+  }
+
+  // Increment number
+  num++;
+
+  delay(1000);
+
+  // Clear segments
+  for (i = 1; i < 8; i++)
+    digitalWrite(pinList[i], LOW);
+
+  delay(1000);
+
+  // Decimal point blink
+  digitalWrite(DECIMAL_POINT, HIGH);
+  delay(1000);
+  digitalWrite(DECIMAL_POINT, LOW);
 }
-   // Delay for 1000 ms (1 sec)
-delay(1000);
-
-   for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], LOW);
-}
-// Delay for 1000 ms (1 sec)
-delay(1000);
-
-   for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], HIGH);
-}
-   // Delay for 1000 ms (1 sec)
-delay(1000);
-
-   for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], LOW);
-}
-   // Delay for 1000 ms (1 sec)
-delay(1000);
-   for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], HIGH);
-}
-   // Delay for 1000 ms (1 sec)
-delay(1000);
-   for (i = 1; i < 8; i++){
-digitalWrite(pinList[i], LOW);
-}
-            break;
-}
-// Increment num
-num++;
-
-// Delay for 1000 ms (1 sec)
-delay(1000);
-
-for(i = 1; i < 8;  i++){
-digitalWrite(pinList[i], LOW);
-}
-
-    // Delay for 1000 ms (1 sec)
-delay(1000);
-
-// Display DECIMAL_POINT after every number displayed
-digitalWrite(DECIMAL_POINT, HIGH);
-
-// Delay for 1000 ms (1 sec)
-delay(1000);
-
-digitalWrite(DECIMAL_POINT, LOW);
-
-}
-            </textarea>
-          </form>
+</textarea>
+          </div>
         </div>
-        <div class="code-head startStop">
-          <h2 id="pushbuttonPower" onclick="changePower();">
-            Start Simulation
-          </h2>
-        </div>
-      </div>
-      <div id="pushbuttonNotification">
-        Click the pushbutton!
       </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <script src="src/js/main.js"></script>
     <script>
-      // Initialize CodeMirror editor in read-only mode with an increased height
       var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
-            mode: "text/x-c++src", // For C++/Arduino syntax highlighting
-            lineNumbers: true, // Show line numbers
-            matchBrackets: true, // Highlight matching brackets
-            theme: "default", // You can change the theme
-            readOnly: "nocursor", // Make the editor read-only
-            tabSize: 4,
-            indentUnit: 4,
+        mode: "text/x-c++src",
+        theme: "monokai",
+        lineNumbers: true,
+        readOnly: true,
+        lineWrapping: false,
+        matchBrackets: true,
+        indentUnit: 2,
+        tabSize: 2,
+        scrollbarStyle: "native"
+      });
+
+      function copyCode() {
+        const code = editor.getValue();
+        navigator.clipboard.writeText(code).then(function() {
+          alert('Code copied to clipboard!');
+        }).catch(function() {
+          const textarea = document.createElement('textarea');
+          textarea.value = code;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          alert('Code copied to clipboard!');
         });
+      }
+
+      function clearCode() {
+        if (confirm('Are you sure you want to clear the code?')) {
+          editor.setValue('');
+        }
+      }
     </script>
-    <script type="text/javascript" src="src/js/main.js"></script>
   </body>
 </html>
