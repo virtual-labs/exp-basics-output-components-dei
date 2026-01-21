@@ -4,22 +4,30 @@ let image_tracker_buzzer = "dis";
 
 // POWER SWITCH
 
-function changePowerBuzzer() {
+function changePower() {
   let image = document.getElementById("ifimg2");
+  const pushButton = document.getElementById("buzzerpushbutton");
+  const startBtn = document.getElementById("startBtn");
+  
   if (image_tracker_buzzer == "dis") {
     image.src = "./src/images/buzzer/buzzer_off.png";
-    document.getElementById("pushbuttonPower").innerHTML = "Stop Simulation";
-    document.getElementById("pushbuttonPower").style.backgroundColor = "red";
+    startBtn.innerHTML = '<span class="play-icon">\u23f9</span> Stop Simulation';
+    startBtn.className = "control-btn stop-btn";
     image_tracker_buzzer = "off";
-    showPushbuttonNotification();
-  } else if (image_tracker_buzzer == "off" || image_tracker_buzzer == "on") {
+    if (pushButton) pushButton.style.display = "inline-block";
+  } else {
     image.src = "./src/images/buzzer/buzzer_static.png";
-    document.getElementById("pushbuttonPower").innerHTML = "Start Simulation";
-    document.getElementById("pushbuttonPower").style.backgroundColor =
-      "#009C4E";
+    startBtn.innerHTML = '<span class="play-icon">\u25b6</span> Start Simulation';
+    startBtn.className = "control-btn start-btn";
     image_tracker_buzzer = "dis";
-    let notification = document.getElementById("pushbuttonNotification");
-    if (notification) notification.style.display = "none";
+    if (pushButton) pushButton.style.display = "none";
+    
+    // Stop audio if playing
+    let audioElement = document.getElementById("myAudio");
+    if (audioElement && !audioElement.paused) {
+      audioElement.pause();
+      audioElement.currentTime = 0;
+    }
   }
 }
 
@@ -38,22 +46,12 @@ function changeBuzzerImage() {
 
 // AUDIO SWITCH
 
-let audioElement = document.getElementById("myAudio");
 function togglePlay() {
+  let audioElement = document.getElementById("myAudio");
   if (audioElement.paused) {
     audioElement.play();
     audioElement.loop = true;
   } else {
     audioElement.pause();
-  }
-}
-
-function showPushbuttonNotification() {
-  let notification = document.getElementById("pushbuttonNotification");
-  if (notification) {
-    notification.style.display = "block";
-    setTimeout(() => {
-      notification.style.display = "none";
-    }, 3000);
   }
 }
