@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing LCD Display with Arduino:</p>
+        <div class="interfacing">
+          <img id="ifimg" src="./src/images/LCD_Off.png" alt="interfacing" />
+          <button id="pushbutton" onclick="changeImage();"></button>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="instruction-box">
+          <h3 class="box-title">Instructions</h3>
+          <div class="instruction-content">
+            <div class="instruction-section">
+              <h4>Objective:</h4>
+              <p>Learn how to interface and display text messages on a 16x2 LCD display using Arduino and the LiquidCrystal library.</p>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Steps to Perform:</h4>
+              <ol>
+                <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
+                <li>The LCD display will initialize and show "Virtual Lab" on the first line</li>
+                <li>Messages will automatically scroll on the second line every 2 seconds</li>
+                <li>Four different messages will be displayed in sequence</li>
+                <li>The sequence will loop continuously until you stop the simulation</li>
+              </ol>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Key Concepts:</h4>
+              <ul>
+                <li><strong>LCD 16x2:</strong> Display module with 16 columns and 2 rows for text</li>
+                <li><strong>LiquidCrystal Library:</strong> Arduino library for easy LCD control</li>
+                <li><strong>Pin Configuration:</strong> Uses pins 2-5, 11, 12 for LCD communication</li>
+                <li><strong>lcd.begin():</strong> Initializes LCD with specified dimensions (16, 2)</li>
+                <li><strong>lcd.setCursor():</strong> Sets cursor position (column, row) for text display</li>
+                <li><strong>lcd.print():</strong> Displays text at current cursor position</li>
+                <li><strong>lcd.clear():</strong> Clears all text from the display</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-box-header">
+            <span class="box-title">Arduino Code - main.ino</span>
+            <div class="code-actions">
+              <button class="control-btn start-btn" id="startBtn" onclick="changePower();">
+                <span class="play-icon">▶</span> Start Simulation
+              </button>
+            </div>
+          </div>
+          <div class="code-content">
+            <textarea id="arduinoCode" readonly>
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+String message[] ={
+"This is a ",
+  "Sample Program",
+  "to Interface",
+  "LCD 16x2 Module."
+};
+
+void setup(){
+lcd.begin(16,2);
+}
+
+void loop(){
+  for(int i=0;i<4;i++){
+  lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Virtual Lab");
+    lcd.setCursor(0, 1);
+    lcd.print(message[i]);
+    delay(2000);
+  }
+}
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+        mode: "text/x-c++src",
+        lineNumbers: true,
+        matchBrackets: true,
+        theme: "monokai",
+        readOnly: "nocursor",
+        tabSize: 2,
+        indentUnit: 2,
+        lineWrapping: false,
+        scrollbarStyle: "native"
+      });
+    </script>
+    <script type="text/javascript" src="src/js/main.js"></script>
+  </body>
+</html>
