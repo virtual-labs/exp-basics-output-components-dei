@@ -19,7 +19,7 @@ Common Arduino functions used for output control include:
 - `tone()`  
 - Library-based display control functions  
 
-<div><img src="./images/arduino_output.jpg" alt="Arduino Output Pins" width="45%"></div>
+<div><img src="./images/arduino_output.jpg" alt="Arduino Output Pins" width="25%"></div>
 
 #### Components
 
