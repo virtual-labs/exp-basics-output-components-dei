@@ -1,0 +1,115 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. What does RGB stand for in RGB LED?",
+      "answers": {
+        "a": "Red Green Blue",
+        "b": "Red Grey Black",
+        "c": "Right Gain Bright",
+        "d": "Random Gradient Beam"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. Which Arduino function generates PWM output?",
+      "answers": {
+        "a": "analogWrite()",
+        "b": "analogRead()",
+        "c": "digitalRead()",
+        "d": "tone()"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. How many segments are present in a 7-segment display?",
+      "answers": {
+        "a": "7",
+        "b": "8",
+        "c": "6",
+        "d": "9"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. OLED display communicates using which protocol?",
+      "answers": {
+        "a": "I2C",
+        "b": "USB",
+        "c": "HDMI",
+        "d": "Ethernet"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. How many characters can a 16×2 LCD display on one line?",
+      "answers": {
+        "a": "8",
+        "b": "16",
+        "c": "32",
+        "d": "2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "6. Which library is typically used for LCD 16×2?",
+      "answers": {
+        "a": "LiquidCrystal",
+        "b": "Wire.h",
+        "c": "Servo.h",
+        "d": "Adafruit_NeoPixel"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "7. What does DP mean in 7-segment display?",
+      "answers": {
+        "a": "Decimal Point",
+        "b": "Data Pin",
+        "c": "Display Power",
+        "d": "Digit Position"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "8. Does a buzzer act as an input or output device?",
+      "answers": {
+        "a": "Output device",
+        "b": "Input device",
+        "c": "Both",
+        "d": "Neither"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "9. Which Arduino pins can be used for PWM output?",
+      "answers": {
+        "a": "Pins marked with '~' symbol",
+        "b": "All digital pins",
+        "c": "Only analog pins",
+        "d": "Only communication pins"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "10. What is the purpose of the enable pin in LCD?",
+      "answers": {
+        "a": "To latch and process the command/data sent to LCD",
+        "b": "To adjust display brightness",
+        "c": "To reset the LCD",
+        "d": "To change communication protocol"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}

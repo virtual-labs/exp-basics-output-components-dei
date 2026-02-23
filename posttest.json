@@ -1,0 +1,115 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. Explain common cathode vs common anode 7-segment display.",
+      "answers": {
+        "a": "Common cathode has all grounds connected; common anode has all positives connected.",
+        "b": "Common cathode uses analog signals; common anode uses digital signals.",
+        "c": "Common cathode has fewer pins.",
+        "d": "Common anode works only with AC supply."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "2. How can Arduino generate multiple colors on an RGB LED?",
+      "answers": {
+        "a": "By mixing PWM signals on the red, green, and blue pins.",
+        "b": "By changing the input voltage.",
+        "c": "By connecting it to analog input pins.",
+        "d": "By rotating the LED physically."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "3. Why is OLED preferred in modern IoT dashboards?",
+      "answers": {
+        "a": "It consumes low power and gives high contrast display.",
+        "b": "It requires no programming.",
+        "c": "It can only display text.",
+        "d": "It works only in dark conditions."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "4. Describe the internal working of an LCD 16×2.",
+      "answers": {
+        "a": "It uses a controller (HD44780) to drive characters in a dot matrix.",
+        "b": "It displays text using OLED pixels.",
+        "c": "It stores each character in RAM permanently.",
+        "d": "It uses LEDs behind every character."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. How can you display sensor data on LCD?",
+      "answers": {
+        "a": "Read sensor → convert to value → use lcd.print().",
+        "b": "Write sensor data directly to the LCD pins.",
+        "c": "Use digitalWrite() for text display.",
+        "d": "Use the LCD to sense data."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "6. What is the difference between active and passive buzzer?",
+      "answers": {
+        "a": "Active buzzer has built-in oscillator; passive needs tone() to generate sound.",
+        "b": "Passive buzzer is louder always.",
+        "c": "Active buzzer can read input signals.",
+        "d": "Both work only with analog input."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "7. How does I2C communication reduce pin usage?",
+      "answers": {
+        "a": "It uses only two lines (SDA, SCL) for multiple devices.",
+        "b": "It disables unused pins.",
+        "c": "It converts analog pins into digital pins.",
+        "d": "It transmits data without wires."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "8. What happens when incorrect wiring is done for 7-segment display?",
+      "answers": {
+        "a": "Some segments will glow incorrectly or not at all.",
+        "b": "It will automatically correct the connection.",
+        "c": "It will display all numbers perfectly.",
+        "d": "It will reset Arduino."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "9. Give a real-life application of buzzer in IoT.",
+      "answers": {
+        "a": "Home security alarm system.",
+        "b": "Video streaming device.",
+        "c": "Weather forecast display.",
+        "d": "LED street light."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "10. How can brightness of RGB LED be controlled in simulation?",
+      "answers": {
+        "a": "By using PWM output through analogWrite() on each color pin.",
+        "b": "By changing digitalRead() values.",
+        "c": "By using Serial Monitor.",
+        "d": "By rotating the LED wires."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}

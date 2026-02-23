@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing RGB LED with Arduino:</p>
+        <div class="interfacing">
+          <img id="ifimg" src="./src/images/RGB_Off.png" alt="interfacing" />
+          <button id="pushbutton" onclick="changeImage();"></button>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="instruction-box">
+          <h3 class="box-title">Instructions</h3>
+          <div class="instruction-content">
+            <div class="instruction-section">
+              <h4>Objective:</h4>
+              <p>Learn how to control an RGB LED to display different colors using Arduino PWM (Pulse Width Modulation) outputs.</p>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Steps to Perform:</h4>
+              <ol>
+                <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
+                <li>The RGB LED will automatically cycle through 8 different colors</li>
+                <li>Each color displays for 1 second before changing</li>
+                <li>Color sequence: Red → Green → Blue → Raspberry → Cyan → Magenta → Yellow → White</li>
+                <li>The color cycle repeats continuously</li>
+              </ol>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Key Concepts:</h4>
+              <ul>
+                <li><strong>RGB LED:</strong> LED with Red, Green, and Blue elements that mix to create colors</li>
+                <li><strong>PWM Control:</strong> Uses analogWrite() to control LED brightness (0-255)</li>
+                <li><strong>Pin Configuration:</strong> Red on pin 11, Green on pin 10, Blue on pin 9</li>
+                <li><strong>Color Mixing:</strong> Combine different intensities of R, G, B to create any color</li>
+                <li><strong>RGB_color() Function:</strong> Custom function sets color by controlling all three pins</li>
+                <li><strong>Primary Colors:</strong> Red (255,0,0), Green (0,255,0), Blue (0,0,255)</li>
+                <li><strong>Secondary Colors:</strong> Cyan (0,255,255), Magenta (255,0,255), Yellow (255,255,0)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-box-header">
+            <span class="box-title">Arduino Code - main.ino</span>
+            <div class="code-actions">
+              <button class="control-btn start-btn" id="startBtn" onclick="changePower();">
+                <span class="play-icon">▶</span> Start Simulation
+              </button>
+            </div>
+          </div>
+          <div class="code-content">
+            <textarea id="arduinoCode" readonly>
+/* 
+    Interfacing of RGB Led with Arduino.
+*/
+int red_light_pin= 11;
+int green_light_pin = 10;
+int blue_light_pin = 9;
+
+void setup() {
+  pinMode(red_light_pin, OUTPUT);
+  pinMode(green_light_pin, OUTPUT);
+  pinMode(blue_light_pin, OUTPUT);
+}
+
+void loop() {
+  RGB_color(255, 0, 0); // Red
+  delay(1000);
+  RGB_color(0, 255, 0); // Green
+  delay(1000);
+  RGB_color(0, 0, 255); // Blue
+  delay(1000);
+  RGB_color(255, 255, 125); // Raspberry
+  delay(1000);
+  RGB_color(0, 255, 255); // Cyan
+  delay(1000);
+  RGB_color(255, 0, 255); // Magenta
+  delay(1000);
+  RGB_color(255, 255, 0); // Yellow
+  delay(1000);
+  RGB_color(255, 255, 255); // White
+  delay(1000);
+}
+
+void RGB_color(int red_light_value, int green_light_value, int blue_light_value)
+ {
+  analogWrite(red_light_pin, red_light_value);
+  analogWrite(green_light_pin, green_light_value);
+  analogWrite(blue_light_pin, blue_light_value);
+}
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+        mode: "text/x-c++src",
+        lineNumbers: true,
+        matchBrackets: true,
+        theme: "monokai",
+        readOnly: "nocursor",
+        tabSize: 2,
+        indentUnit: 2,
+        lineWrapping: false,
+        scrollbarStyle: "native"
+      });
+    </script>
+    <script type="text/javascript" src="src/js/main.js"></script>
+  </body>
+</html>

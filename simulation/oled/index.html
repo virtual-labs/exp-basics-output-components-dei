@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virtual IoT Lab DEI</title>
+    <link
+      rel="icon"
+      href="https://www.vlab.co.in/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="if-vid">
+        <p class="p-head">Interfacing OLED Display with Arduino:</p>
+        <div class="interfacing">
+          <img id="ifimg" src="./src/images/led/oled_off.gif" alt="interfacing" />
+          <button id="pushbutton" onclick="changeImage();"></button>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="instruction-box">
+          <h3 class="box-title">Instructions</h3>
+          <div class="instruction-content">
+            <div class="instruction-section">
+              <h4>Objective:</h4>
+              <p>Learn how to interface and display animated text on an OLED display using Arduino with Adafruit SSD1306 library.</p>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Steps to Perform:</h4>
+              <ol>
+                <li>Click <strong>"Start Simulation"</strong> to power up the Arduino circuit</li>
+                <li>The OLED display will initialize and clear the screen</li>
+                <li>Text messages will appear word-by-word with animation effects</li>
+                <li>First message: "Welcome to IOT Virtual Lab" displays across 2 lines</li>
+                <li>Second message: "This is a sample program of OLED Display" shows across 3 lines</li>
+                <li>The animation sequence loops continuously</li>
+              </ol>
+            </div>
+
+            <div class="instruction-section">
+              <h4>Key Concepts:</h4>
+              <ul>
+                <li><strong>OLED Display:</strong> 128x64 pixel organic LED display with SSD1306 controller</li>
+                <li><strong>Adafruit Libraries:</strong> Uses Adafruit_GFX and Adafruit_SSD1306 for display control</li>
+                <li><strong>I2C Communication:</strong> Display communicates via I2C protocol (address 0x3D)</li>
+                <li><strong>Text Animation:</strong> Custom function displays text word-by-word with delays</li>
+                <li><strong>Display Functions:</strong> clearDisplay(), setTextSize(), setCursor(), print()</li>
+                <li><strong>Screen Resolution:</strong> 128 columns × 64 rows for graphics and text</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-box-header">
+            <span class="box-title">Arduino Code - main.ino</span>
+            <div class="code-actions">
+              <button class="control-btn start-btn" id="startBtn" onclick="changePower();">
+                <span class="play-icon">▶</span> Start Simulation
+              </button>
+            </div>
+          </div>
+          <div class="code-content">
+            <textarea id="arduinoCode" readonly>
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET     4
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// Function to display full line word-by-word with animation
+void animateLine(String line, int x, int y, int wordDelay) {
+  display.setCursor(x, y);
+  String word = "";
+  for (int i = 0; i < line.length(); i++) {
+    char c = line.charAt(i);
+    if (c == ' ' || i == line.length() - 1) {
+      if (i == line.length() - 1) word += c;  // Include last character
+      display.print(word + " ");
+      display.display();
+      delay(wordDelay);
+      word = "";
+    } else {
+      word += c;
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3D)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    while (true);
+  }
+
+  display.clearDisplay();
+  display.display();
+  delay(1000);
+}
+
+void loop() {
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+
+  // First message: split into 2 lines manually
+  animateLine("Welcome to IOT", 0, 10, 400);
+  animateLine("Virtual Lab", 0, 20, 400);
+  delay(1000);  // pause between messages
+
+  display.clearDisplay();
+
+  // Second message: also split to fit OLED screen
+  animateLine("This is a sample", 0, 10, 300);
+  animateLine("program of OLED", 0, 20, 300);
+  animateLine("Display", 0, 30, 300);
+  delay(1500);  // pause before repeating
+}
+
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("arduinoCode"), {
+        mode: "text/x-c++src",
+        lineNumbers: true,
+        matchBrackets: true,
+        theme: "monokai",
+        readOnly: "nocursor",
+        tabSize: 2,
+        indentUnit: 2,
+        lineWrapping: false,
+        scrollbarStyle: "native"
+      });
+    </script>
+    <script type="text/javascript" src="src/js/main.js"></script>
+  </body>
+</html>
